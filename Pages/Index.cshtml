@@ -1,0 +1,36 @@
+﻿@page
+@model ah4cClientApp.Pages.IndexModel
+@{
+
+    ViewData["Title"] = "Home page";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Авторизация</title>
+</head>
+<body>
+    <h1>Авторизация</h1>
+    <form method="post">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" id="login"  value="Войти">
+        @{
+            var isdisplay = "none";
+            if (ViewData["showerror"] != null && ViewData["showerror"] as string == "true")
+            {
+                isdisplay = "block";
+            }
+        }
+        <div class="form-group" style="display:@isdisplay">
+            <span style="color:red">@ViewData["customerror"]</span>
+        </div>
+    </form>
+    <form action="/RegistrationPage">
+        <input type="submit" value="Зарегистрироваться" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@page
+@model ah4cClientApp.Pages.RegistrationPageModel
+@{
+    var isdisplay = "none";
+    if (ViewData["showerror"] != null && ViewData["showerror"] as string == "true")
+    {
+        isdisplay = "block";
+    }
+}
+
+<form method="post">
+    <label for="clientname">ФИО</label><br />
+    <input required name="clientname" /><br />
+    <label for="clientlogin">Логин</label><br />
+    <input required name="clientlogin" /><br />
+    <label for="clientpassword">Пароль</label><br />
+    <input type="password" required name="clientpassword" /><br />
+    <label for="clientphone">Номер телефона</label><br />
+    <input required name="clientphone" /><br />
+    <label for="clientemail">Почта</label><br />
+    <input required name="clientemail" /><br />
+    <input type="submit" value="Зарегистрироваться"/>
+    <div class="form-group" style="display:@isdisplay">
+        <span style="color:red">@ViewData["customerror"]</span>
+    </div>
+</form>

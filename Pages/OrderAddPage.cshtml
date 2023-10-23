@@ -1,0 +1,41 @@
+﻿@page
+@model ah4cClientApp.Pages.OrderAddPageModel
+@{
+    var isdisplay = "none";
+    if (ViewData["showerror"] != null && ViewData["showerror"] as string == "true")
+    {
+        isdisplay = "block";
+    }
+    else if (ViewData["showsuccess"] != null && ViewData["showsuccess"] as string == "true")
+    {
+        isdisplay = "block";
+    }
+}
+
+<form method="post">
+    <label for="clientId">ID клиента</label><br />
+    <input required name="clientId" /><br />
+    <label for="roomId">ID комнаты</label><br />
+    <input required name="roomId" /><br />
+    <label for="workerId">ID работник</label><br />
+    <input required name="workerId" /><br />
+    <label for="issueDate">Дата принятия</label><br />
+    <input type="date" required name="issueDate" /><br />
+    <label for="admissionDate">Дата выселения</label><br />
+    <input type="date" required name="admissionDate" /><br />
+    <label for="animalId">ID питомца</label><br />
+    <input name="animalId" /><br />
+    <label for="orderStatusId">Статус заявки</label><br />
+    <input name="orderStatusId" /><br />
+    <input type="submit" value="Добавить" />
+    <div class="form-group" style="display:@isdisplay">
+        <span style="color:red">@ViewData["customerror"]</span>
+    </div>
+    <div class="form-group" style="display:@isdisplay">
+        <span style="color:green">@ViewData["customsuccess"]</span>
+    </div>
+</form>
+<form action="/About">
+    <input type="submit" value="Вернуться назад"/>
+</form>
+

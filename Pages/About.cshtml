@@ -1,0 +1,97 @@
+﻿@page
+@using AnimalHouseRestAPI.Models;
+@model ah4cClientApp.Pages.AboutModel
+@{
+    ViewData["Title"] = "AnimalHouse";
+    var isdisplay = "none";
+    if (ViewData["showerror"] != null && ViewData["showerror"] as string == "true" && ViewData["showsuccess"] == null)
+    {
+        isdisplay = "block";
+    }
+    else if (ViewData["showsuccess"] != null && ViewData["showsuccess"] as string == "true")
+    {
+        isdisplay = "block";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Управление заявками</title>
+</head>
+<body>
+    <h1>Управление заявками</h1>
+
+    
+    <form method="post">
+        <label for="orderid">Изменение статуса заявки по ID:</label>
+        <input type="text" id="orderid" name="orderid"><br><br>
+        <label for="statusid">Новый статус:</label>
+        <select id="statusid" name="statusid">
+            <option value="1">Принят</option>
+            <option value="2">Ожидает оплаты</option>
+            <option value="3">Оплачен</option>
+        </select><br><br>
+        <button type="submit">Изменить</button>
+    </form>
+
+    <form method="post">
+        <label for="clientid">Вывод заявок по ID клиента:</label>
+        <input type="text" id="clientid" name="clientid"/><br><br>
+        <button id="takeOrders" type="submit">Вывести заявки</button>
+    </form>
+
+    <form method="post">
+        <label for="orderidoutput">Вывод заявки по ID:</label>
+        <input type="text" id="orderidoutput" name="orderidoutput"><br><br>
+        <button type="submit">Вывести</button>
+    </form>
+
+    <table>
+        <tr>
+            <th scope="col">Номер записи</th>
+            <th scope="col">ID заявки</th>
+            <th scope="col">ID клинета</th>
+            <th scope="col">ID питомца</th>
+            <th scope="col">ID комнаты</th>
+            <th scope="col">Дата заселения</th>
+            <th scope="col">Дата выселения</th>
+            <th scope="col">Принявший работник</th>
+            <th scope="col">Статус заявки</th>
+        </tr>
+        @foreach (Order order in AboutModel.OrderList)
+        {
+            <tr>
+                <th scope="row">@order.OrderNoteid</th>
+                <th scope="row">@order.OrderId</th>
+                <th scope="row">@order.ClientId</th>
+                <th scope="row">@order.AnimalId</th>
+                <th scope="row">@order.RoomId</th>
+                <th scope="row">@order.AdmissionDate</th>
+                <th scope="row">@order.IssueDate</th>
+                <th scope="row">@order.WorkerId</th>
+                <th scope="row">@order.OrderStatusid</th>
+            </tr>
+        }
+    </table>
+
+    <form method="post">
+        <br />
+        <label>Удаление заявки по ID</label><br />
+        <label for="orderiddelete">ID заявки: </label><br />
+        <input name="orderiddelete" /><br />
+        <input type="submit" /><br />
+        <div class="form-group" style="display:@isdisplay">
+            <span style="color:red">@ViewData["customerror"]</span>
+        </div>
+        <div class="form-group" style="display:@isdisplay">
+            <span style="color:green">@ViewData["customsuccess"]</span>
+        </div>
+    </form>
+
+    <form action="/OrderAddPage">
+        <input type="submit" value="Добавить новую заявку"/>    
+    </form>
+
+</body>
+</html>

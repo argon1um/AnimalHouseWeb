@@ -5,19 +5,65 @@
     ViewData["Title"] = "Home page";
 
 }
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Авторизация</title>
+<style>
+    .authform {
+        margin-left:auto;
+        margin-right:auto;
+        width: 300px;
+    }
+    .authform input{
+        padding-left: 20px;
+        border: 1px solid black;
+        border-radius: 20px;
+        margin-left:auto;
+        margin-right:auto;
+        width:230px;
+        height:30px;
+    }
+    .authform button{
+        width:77%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 15px;
+    }
+    .authform button:hover{
+        background-color: lightblue;
+    }
+
+    .bts{
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        
+    }
+    .bts button{
+        margin-top:10px;
+         width: 77%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 15px;
+    }
+
+</style>
 </head>
 <body>
-    <h1>Авторизация</h1>
-    <form method="post">
-        <label for="username">Имя пользователя:</label>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" id="login"  value="Войти">
+    <form method="post" class="authform">
+        <h1>Авторизация</h1>
+        <input type="text" id="username" name="username" placeholder="Имя пользователя"><br><br>
+        <input type="password" id="password" name="password" placeholder="Пароль"><br><br>
+        <button id="login">Войти</button>
+ 
         @{
             var isdisplay = "none";
             if (ViewData["showerror"] != null && ViewData["showerror"] as string == "true")
@@ -29,8 +75,8 @@
             <span style="color:red">@ViewData["customerror"]</span>
         </div>
     </form>
-    <form action="/RegistrationPage">
-        <input type="submit" value="Зарегистрироваться" />
+    <form action="/RegistrationPage" class="bts">
+        <button>Зарегистрироваться</button>
     </form>
 </body>
 </html>

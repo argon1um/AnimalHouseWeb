@@ -81,7 +81,7 @@ namespace ah4cClientApp.Pages
                     var showerror4 = true;
                     if (showerror4)
                     {
-                        ViewData["showerror4"] = "true";
+                        ViewData["showerror"] = "true";
                         ViewData["customerror"] = "Неверный логин или пароль!";
                         return Page();
                     }

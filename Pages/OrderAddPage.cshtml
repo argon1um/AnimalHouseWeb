@@ -11,13 +11,55 @@
         isdisplay = "block";
     }
 }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 50%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 <form method="post">
     <label for="clientId">ID клиента</label><br />
     <input required name="clientId" /><br />
     <label for="roomId">ID комнаты</label><br />
     <input required name="roomId" /><br />
-    <label for="workerId">ID работник</label><br />
+    <label for="workerId">ID работника</label><br />
     <input required name="workerId" /><br />
     <label for="issueDate">Дата принятия</label><br />
     <input type="date" required name="issueDate" /><br />
